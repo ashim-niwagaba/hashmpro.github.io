@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit|posts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <form action="/edit/{{ pos.post_id }}" method="POST" enctype="multipart/form-data">
+        <input type="text" name="author" placeholder="Authour Name" value="{{pos.author}}"><br>
+        <input type="text" name="title" placeholder="Post title" value="{{pos.title}}"><br>
+<textarea name="post"  cols="30" rows="10" value="{{pos.post}}" >
+        
+    </textarea><br>
+    
+    <button type="submit">Update</button><br>
+    
+    </form>
+</body>
+</html>

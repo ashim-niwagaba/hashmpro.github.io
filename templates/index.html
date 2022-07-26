@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME|PAGE</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .posta{
+            
+           
+            background-color: #f3ecec;
+            
+            
+            
+            
+        }
+       
+p{
+    
+    background-color:rgb(255, 253, 253) ;
+    width: 300px;
+    
+    margin: 4px;
+    margin-top: 30px;
+    border: whitesmoke 1px solid;
+    border-radius: 16px;
+}
+ @media screen and (max-width: 677px){
+    p{
+        
+        width: 100%;
+        height: auto;
+       
+
+      
+        
+    }
+
+
+}
+
+.one{
+    display: inline-block;
+    
+}
+.one h3{
+    display: block;
+    
+    margin: 4px 1px;
+}
+
+.header{
+    background-color: #62ebeb;
+    height: 50px; 
+    text-align: center;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+  
+}
+/*
+responsive header
+*/
+@media screen and (max-width: 677px){
+    .header{
+        
+
+        margin: 0 auto;
+        
+    }
+
+
+}
+
+ul{  
+    display: flex;
+    justify-content: space-between;
+
+    
+}
+li{
+   list-style: none; 
+}
+a{
+text-decoration: none;
+margin: 4px;
+text-transform: uppercase;
+}
+.logo{
+    margin-right: auto;
+}
+.logo,a{
+    text-transform: uppercase;
+    margin-top: 17px;
+}
+h1{
+    margin-top: 50px
+}
+footer{
+    top: 700px;
+    left: 0;
+    
+    background: #ccc;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+.one a{
+    margin-right: 30px;
+}
+.one .first{
+    margin-left: 10px;
+    background-color: #1111e7;
+    padding: 8px;
+    color: #000;
+}
+.one .second{
+    background-color: #10a00b;
+    padding: 8px;
+    color: #000;
+
+}
+.one .third{
+    background-color: rgb(228, 11, 29);
+    padding: 8px;
+    color: rgb(14, 13, 13);
+
+}
+@media screen and(max-width: 677px){
+    .posta {
+        display: block;
+       justify-content: space-around;
+    }
+}
+@media screen and (max-width: 677px){
+    footer{
+    background: #ccc;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    }
+}
+
+    </style>
+    
+</head>
+<body>
+    <center><h1>my posts</h1></center><br><br>
+    {% if session['username'] %}
+    <center style="color: rgb(10, 212, 10);"><h3>welcome {{ session['username'] }}</h3><a href="/logout">logout</a></center>
+    {% else %}  
+    <center><h3 style="color: #ff1c78;">You are not logged in. please <a href="/login">Login!</a></h3></center>
+    {% endif %}
+    <hr><div class="posta">
+    
+    {% for post in posts%}
+    <div class="one">
+         <center>
+         <h3>Posted by:  {{ post.author }} </h3>
+         <h3>Title:  {{ post.title }} </h3> 
+    </center>
+   
+    <p>{{post.post }} </p><br>
+     <a class="first" href="/like">Like</a>
+    <a class="second" href="/delete/{{ post.post_id }}">Delete</a>
+    <a class="third" href="/edit/{{ post.post_id }}">Edit</a>
+    
+</div>
+  
+    {% endfor %}
+    
+</div><br><br><hr>
+<header class="header">
+    <nav>
+        <ul>
+    <li class="logo">Logo</li>
+    <a href="/">
+        <li>Home</li>
+    </a>
+    <a href="/login">
+        <li>Login</li>
+    </a>
+    
+    <a href="/posts">
+        <li>Posts</li>
+    </a>
+</ul>
+</nav>
+</header>
+<footer><h4>&copy; Posts 2020</h4></footer>
+</body>
+</html>
